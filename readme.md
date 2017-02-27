@@ -4,7 +4,7 @@
 ![screenshot](http://i.imgur.com/Dn13ZlV.png)
 
 ## What is this?
-Transmission-RSS is a tool to fetch and parse RSS feeds, extract episode data and add them to transmission client to it's RPC interface.
+Transmission-RSS is a tool to fetch and parse RSS feeds, extract episode data and add them to transmission client through it's RPC interface.
 
 ## What it has?
 * Web interface to display downloaded episodes and trigger actions (download, cleanup)
@@ -27,7 +27,7 @@ Transmission-RSS is a tool to fetch and parse RSS feeds, extract episode data an
        "baseURI" => "/your-directory",
      ]
     ```
- 6. Configure your transmission client's RPC access
+6. Configure your transmission client's RPC access
     ```php
     <?php
  
@@ -51,6 +51,7 @@ Transmission-RSS is a tool to fetch and parse RSS feeds, extract episode data an
        "boxcar" => [
            "active" => true,
            "token" => "your-token"
+        ]
      ]
     ```
 8. Basically you are ready to go.
