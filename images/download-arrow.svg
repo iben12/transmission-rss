@@ -1,0 +1,18 @@
+<svg width="22" height="23" viewBox="0 0 22 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>download-arrow</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(1 -336)" figma:type="canvas">
+<g id="download-arrow" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Vector" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(1.40594 336)" fill="#3F3F3F" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path1_fill" transform="translate(-1 355.934)" fill="#3F3F3F" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 7.83071 18.2888C 8.04546 18.4687 8.32656 18.5603 8.60373 18.5603C 8.88482 18.5603 9.16592 18.4687 9.37675 18.2888L 16.8805 12.0006C 17.3061 11.644 17.3061 11.0616 16.8805 10.6984L 15.842 9.82816C 15.4164 9.47153 14.7215 9.47153 14.2882 9.82816L 10.4309 13.0639L 10.4309 0.919367C 10.4309 0.412233 9.93501 0 9.33383 0L 7.86975 0C 7.26463 0 6.77266 0.40894 6.77266 0.919367L 6.77266 13.0671L 2.91149 9.83141C 2.48592 9.47482 1.7871 9.47482 1.35764 9.83141L 0.319144 10.7017C -0.106382 11.0583 -0.106382 11.6439 0.319144 12.0038L 7.83071 18.2888Z"/>
+<path id="path1_fill" d="M 20.9106 5.84708e-07L 1.09709 5.84708e-07C 0.491972 5.84708e-07 -7.94299e-08 0.415526 -7.94299e-08 0.919367L -7.94299e-08 2.14627C -7.94299e-08 2.65336 0.495851 3.0656 1.09709 3.0656L 20.9028 3.0656C 21.5079 3.0656 21.9998 2.65007 21.9998 2.14627L 21.9998 0.919367C 22.0116 0.408983 21.5157 5.84708e-07 20.9106 5.84708e-07Z"/>
+</defs>
+</svg>

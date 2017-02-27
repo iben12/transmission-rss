@@ -1,0 +1,24 @@
+<svg width="22" height="23" viewBox="0 0 22 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>icon</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-93 -336)" figma:type="canvas">
+<g id="icon" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(93.8529 344.224)" fill="#3F3F3F" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="vector">
+<use xlink:href="#path1_fill" transform="translate(94.6204 336.364)" fill="#3F3F3F" style="mix-blend-mode:normal;"/>
+<use xlink:href="#path2_fill" transform="translate(94.6204 336.364)" fill="#3F3F3F" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="vector">
+<use xlink:href="#path3_fill" transform="translate(102.891 336)" fill="#3F3F3F" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 8.69749 0L 4.34874 0C 2.93595 0 1.79066 0.584093 1.79066 1.88634L 0 12.4184C 0 13.7206 1.14529 14.7763 2.55808 14.7763L 17.736 14.7763C 19.1488 14.7763 20.2941 13.7206 20.2941 12.4184L 18.5887 1.88634C 18.5887 0.584093 17.4435 0 16.0307 0L 11.5966 0L 11.5966 2.40672L 14.3679 5.05442L 11.5966 5.05442L 11.5966 7.15238L 11.5966 7.43917L 11.8106 9.4861L 15.2206 9.4861L 10.1471 12.6542L 5.07353 9.4861L 8.48355 9.4861L 8.69749 7.43917L 8.69749 7.15238L 8.69749 5.05442L 5.92622 5.05442L 8.69749 2.40672L 8.69749 0Z"/>
+<path id="path1_fill" d="M 7.93293 0.02593C 5.75475 0.11245 3.47218 0.31857 0.777265 0.624422C 0.334098 0.67472 0 1.04104 0 1.47557L 0 2.95269C 0 3.38907 0.336837 3.7564 0.782253 3.80381C 3.48597 4.09159 5.76855 4.26158 7.93293 4.32286L 7.93293 0.02593Z"/>
+<path id="path2_fill" d="M 10.8264 4.32039C 13.0327 4.25507 15.3029 4.07881 17.9736 3.80173C 18.4203 3.75538 18.7593 3.38746 18.7593 2.94989L 18.7593 1.45878C 18.7593 1.03147 18.4359 0.668695 18.0011 0.611349C 15.314 0.256911 13.0314 0.0601683 10.8264 0L 10.8264 4.32039Z"/>
+<path id="path3_fill" d="M 0 0.206717C 0.886616 -0.0814237 1.3702 -0.0560971 2.217 0.206717L 2.217 13.9613C 2.04647 14.7472 0.170539 14.7472 0 13.9613L 0 0.206717Z"/>
+</defs>
+</svg>

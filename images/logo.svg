@@ -1,0 +1,28 @@
+<svg width="32" height="38" viewBox="0 0 32 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>logo</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(455 281)" figma:type="canvas">
+<g id="logo" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Union" style="mix-blend-mode:normal;isolation:isolate;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(-452.962 -279.939)" fill="#E91616" style="mix-blend-mode:normal;"/>
+<use xlink:href="#path1_fill" transform="translate(-452.962 -279.939)" fill="#E91616" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="vector">
+<use xlink:href="#path2_fill" transform="translate(-454.134 -247.526)" fill="#DCDCDC" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="vector">
+<use xlink:href="#path3_fill" transform="translate(-454.134 -267.819)" fill="#DCDCDC" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;isolation:isolate;" figma:type="vector">
+<use xlink:href="#path4_fill" transform="translate(-440.328 -280.5)" fill="#DCDCDC" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 27.4553 5.86227C 23.3758 6.28952 19.9079 6.56131 16.5377 6.66205L 16.5377 0C 19.906 0.0927734 23.3927 0.396149 27.4974 0.942688C 28.1616 1.03113 28.6555 1.59052 28.6555 2.24942L 28.6555 4.54874C 28.6555 5.22348 28.1377 5.7908 27.4553 5.86227Z"/>
+<path id="path1_fill" d="M 1.18732 0.96286C 5.30389 0.491241 8.79059 0.173401 12.1179 0.039978L 12.1179 6.66586C 8.81168 6.57135 5.32495 6.30923 1.19492 5.86548C 0.514526 5.79236 0 5.22595 0 4.55304L 0 2.27533C 0 1.60529 0.510345 1.04041 1.18732 0.96286Z"/>
+<path id="path2_fill" d="M 0 0L 0 0.389635C 0 2.3977 1.74948 4.02555 3.90756 4.02555L 27.0924 4.02555C 29.2505 4.02555 31 2.3977 31 0.389635L 31 2.90171e-06C 30.4778 1.56213 28.915 2.6817 27.0924 2.6817L 3.90756 2.6817C 2.08495 2.6817 0.522145 1.56212 0 0Z"/>
+<path id="path3_fill" d="M 13.2857 0L 6.64285 0C 4.48477 0 2.7353 0.900673 2.7353 2.90873L 0 19.1492C 0 21.1572 1.74948 22.7851 3.90756 22.7851L 27.0924 22.7851C 29.2505 22.7851 31 21.1572 31 19.1492L 28.395 2.90873C 28.395 0.900673 26.6455 0 24.4874 0L 17.7143 0L 17.7143 3.71116L 21.9474 7.79392L 17.7143 7.79392L 17.7143 11.029L 17.7143 11.4712L 18.0411 14.6276L 23.25 14.6276L 15.5 19.5128L 7.75 14.6276L 12.9589 14.6276L 13.2857 11.4712L 13.2857 11.029L 13.2857 7.79392L 9.05252 7.79392L 13.2857 3.71116L 13.2857 0Z"/>
+<path id="path4_fill" d="M 0 0.318758C 1.35434 -0.125555 2.09303 -0.0865018 3.38656 0.318758L 3.38656 21.5283C 3.12605 22.7403 0.260504 22.7403 0 21.5283L 0 0.318758Z"/>
+</defs>
+</svg>

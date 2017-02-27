@@ -1,0 +1,42 @@
+{
+  "name": "transmission-rss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/iben12/transmission-rss.git"
+  },
+  "author": "iben",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/iben12/transmission-rss/issues"
+  },
+  "homepage": "https://gitlab.com/iben12/transmission-rss#README",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "caniuse-db": "^1.0.30000622",
+    "moment": "^2.17.1",
+    "vue": "^2.1.10"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^2.0.0-rc.3",
+    "node-sass": "^4.5.0",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
