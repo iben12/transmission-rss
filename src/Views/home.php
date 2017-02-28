@@ -40,7 +40,8 @@
     </transition>
     <transition name="just-fade" mode="out-in">
         <div class="dl-tab" v-if="tab == 'episodes'" key="dl">
-            <h2>Recent downloads</h2>
+            <h2 v-if="groupedEpisodes.length > 0">Recent downloads</h2>
+            <h2 v-else>No episodes downloaded yet</h2>
             <episode-group v-for="group in groupedEpisodes" v-bind:group="group"></episode-group>
         </div>
 
