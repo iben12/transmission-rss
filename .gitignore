@@ -3,4 +3,4 @@ composer.lock
 node_modules
 .vscode/
 .idea/
-*.sqlite
+src/trrss_db.sqlite

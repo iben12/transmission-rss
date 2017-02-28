@@ -34,6 +34,7 @@ Transmission-RSS is a tool to fetch and parse RSS feeds, extract episode data an
     return [
        // ...
        "transmission" => [
+           "active" => true,
            "host" =>"http://example.com:9091",
            "endpoint" => "/transmission/rpc",
            "username" =>"username",
@@ -54,6 +55,7 @@ Transmission-RSS is a tool to fetch and parse RSS feeds, extract episode data an
         ]
      ]
     ```
+8. Copy the `src/trrss_db.sqlite.empty` file to `src/trrss_db.sqlite`
 8. Basically you are ready to go.
 
 ## About
