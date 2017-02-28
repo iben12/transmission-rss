@@ -16,6 +16,7 @@ return [
     ],
 
     "transmission" => [
+        "active" => false,
         "host" =>"http://example.com:9091",
         "endpoint" => "/transmission/rpc",
         "username" =>"username",

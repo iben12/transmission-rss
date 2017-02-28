@@ -83,12 +83,14 @@ Class Api {
 
         foreach ($new as $episode)
         {
-            try {
-                $transmission->add($episode->link, $episode->show_title);
-            }
-            catch (\Exception $e) {
-                continue;
-                // TODO: notify user
+            if ($this->config["transmission"]["active"]) {
+                try {
+                    $transmission->add($episode->link, $episode->show_title);
+                }
+                catch (\Exception $e) {
+                    continue;
+                    // TODO: notify user
+                }
             }
 
             $downloading[] = $episode;

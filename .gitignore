@@ -3,3 +3,4 @@ composer.lock
 node_modules
 .vscode/
 .idea/
+*.sqlite
