@@ -32,8 +32,7 @@ class Feed
     {
         if (array_key_exists($this->type, $parsers)) {
             return new $parsers[$this->type]();
-        }
-        else {
+        } else {
             throw new Exception('Parser not found');
         }
     }
@@ -42,7 +41,7 @@ class Feed
     {
         try {
             $raw = file_get_contents($this->url);
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return false;
         }
         return $raw;
@@ -56,8 +55,7 @@ class Feed
             return [];
         }
 
-        $newEpisodes = array_filter($this->feedParser->parse($xml), function($episode)
-        {
+        $newEpisodes = array_filter($this->feedParser->parse($xml), function ($episode) {
             return $this->isNew($episode);
         });
         return $newEpisodes;
@@ -66,8 +64,8 @@ class Feed
     private function isNew($episode)
     {
         $existing = Episode::objects()
-            ->filter('episode_id','=',$episode->episode_id)
-            ->filter('show_id','=',$episode->show_id)
+            ->filter('episode_id', '=', $episode->episode_id)
+            ->filter('show_id', '=', $episode->show_id)
             ->fetch();
 
         if (!$existing) {

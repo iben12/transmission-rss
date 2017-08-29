@@ -30,10 +30,14 @@ return [
             ]
         ]
     ],
+    "notification" => [
+        "active" => true,
+        "service" => "pushbullet"
+    ],
     "boxcar" => [
-        "active" => false,
         "token" => "your-boxcar-token"
+    ],
+    "pushbullet" => [
+        "token" => "your-pushbullet-token"
     ]
 ];
-
-

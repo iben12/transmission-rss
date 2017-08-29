@@ -9,11 +9,12 @@ use App\Services\Transmission;
 use Guzzle\Http\Exception\BadResponseException;
 use Phormium\Orm;
 
-Class Api {
+class Api
+{
 
     protected $config;
 
-    function __construct()
+    public function __construct()
     {
         $this->config = require('config.php');
         Orm::configure($this->config["orm"]);
@@ -52,11 +53,10 @@ Class Api {
 
         $newEpisodes = [];
 
-        foreach($feeds as $feedData) {
+        foreach ($feeds as $feedData) {
             try {
                 $feed = new Feed($this->config["parsers"], $feedData);
-            }
-            catch (\Exception $e) {
+            } catch (\Exception $e) {
                 continue;
             }
 
@@ -81,13 +81,11 @@ Class Api {
 
         $downloading = [];
 
-        foreach ($new as $episode)
-        {
+        foreach ($new as $episode) {
             if ($this->config["transmission"]["active"]) {
                 try {
                     $transmission->add($episode->link, $episode->show_title);
-                }
-                catch (\Exception $e) {
+                } catch (\Exception $e) {
                     continue;
                     // TODO: notify user
                 }
@@ -98,8 +96,8 @@ Class Api {
             $episode->save();
         }
 
-        if ($this->config["boxcar"]["active"]) {
-            $msg = new Message();
+        if ($this->config["notification"]["active"]) {
+            $msg = new Message($this->config["notification"]["service"]);
             $msg->send($downloading);
         }
 

@@ -2,21 +2,26 @@
 
 namespace App\Services;
 
-Class Boxcar {
+use \App\Notification\NotificationServiceInterface;
+
+class Boxcar implements NotificationServiceInterface
+{
 
     private $token;
-    
-    function __construct()
+
+    public function __construct()
     {
         $this->getConfig();
     }
 
-    private function getConfig() {
+    private function getConfig()
+    {
         $config = require(__DIR__.'/../config.php');
         $this->token = $config["boxcar"]["token"];
     }
 
-    public function push($title, $body) {
+    public function push($title, $body)
+    {
         curl_setopt_array(
             $push = curl_init(),
             [

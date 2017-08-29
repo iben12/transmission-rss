@@ -2,15 +2,16 @@
 
 namespace App\Services;
 
+use App\Notification\NotificationServiceFactory;
 
 class Message
 {
-    protected $boxcar;
+    protected $service;
     protected $title;
 
-    public function __construct()
+    public function __construct($service)
     {
-        $this->boxcar = new Boxcar();
+        $this->service = NotificationServiceFactory::getService($service);
         $this->title = 'TransmissionRSS: New episode(s).';
     }
 
@@ -18,7 +19,7 @@ class Message
     {
         $body = $this->renderBody($episodes);
 
-        $this->boxcar->push($this->title, $body);
+        $this->service->push($this->title, $body);
     }
 
     private function renderBody($episodes)
