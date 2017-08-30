@@ -17,7 +17,7 @@
             "Tests\\": "tests/"
         },
         "files": [
-            "src/Helpers/config.php"
+            "src/Helpers/configHelper.php"
         ]
     },
     "require-dev": {
