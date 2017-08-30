@@ -15,7 +15,7 @@ Transmission-RSS is a tool to fetch and parse RSS feeds, extract episode data an
 
 ## Usage
 1. Download or clone the repo.
-2. Copy `config.php.example` to `config.example`
+2. Copy `config.php.example` to `config.php`
 3. Set up your feed at [ShowRSS](https://show-rss.info) and get feed URL.
 4. Enter your feed in `config.php`
 5. If you want to use trss from a server subdirectory and it to the `baseURI` ex.
