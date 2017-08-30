@@ -9,8 +9,7 @@ $route = new App\Router($_SERVER);
 
 $route->get('/api/*', 'Api@index');
 
-$route->get('/', function()
-{
+$route->get('/', function () {
     $api = new App\Api();
     $history = $api->episodes();
     $feeds = $api->feeds();
@@ -19,8 +18,7 @@ $route->get('/', function()
     return $response;
 });
 
-$route->get('/test', function()
-{
+$route->get('/test', function () {
     $response = require('src/Views/svgtest.php');
 
     return $response;

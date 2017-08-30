@@ -2,7 +2,6 @@
 
 namespace App\Parsers;
 
-
 interface FeedParserInterface
 {
     public function parseFeed($feedItems);

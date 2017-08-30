@@ -2,7 +2,6 @@
 
 namespace App\Parsers;
 
-
 use Lightools\Xml\XmlLoader;
 
 abstract class BaseParser
@@ -26,7 +25,7 @@ abstract class BaseParser
             $parser = new XmlLoader();
             $parsed_rss = $parser->loadXml($xml);
             $items = $parsed_rss->getElementsByTagName('item');
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return false;
         }
         return $items;

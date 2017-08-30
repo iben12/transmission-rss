@@ -2,7 +2,6 @@
 
 namespace App;
 
-
 class Request
 {
     public $request;
@@ -12,10 +11,8 @@ class Request
 
     public function __construct()
     {
-        $this->config = require('config.php');
-
         $this->request = $_SERVER;
-        $this->uri = str_replace($this->config["baseURI"], "",  $this->request['REQUEST_URI']);
+        $this->uri = str_replace(config("baseURI"), "", $this->request['REQUEST_URI']);
         $this->uriSegments = explode('/', $this->uri);
         $this->method = $this->request['REQUEST_METHOD'];
     }

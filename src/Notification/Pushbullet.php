@@ -1,24 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Notification;
 
-use App\Notification\NotificationServiceInterface;
-
-class Pushbullet implements NotificationServiceInterface
+class Pushbullet implements NotificationProviderInterface
 {
-    private $token;
-
-    public function __construct()
-    {
-        $this->getConfig();
-    }
-
-    private function getConfig()
-    {
-        $config = require(__DIR__.'/../config.php');
-        $this->token = $config["pushbullet"]["token"];
-    }
-
     public function push($title, $body)
     {
         $message = [
@@ -32,14 +17,13 @@ class Pushbullet implements NotificationServiceInterface
                 CURLOPT_URL => "https://api.pushbullet.com/v2/pushes",
                 CURLOPT_HTTPHEADER => [
                     'Content-Type: application/json',
-                    'Access-Token: ' . $this->token
+                    'Access-Token: ' . config('pushbullet.token')
                 ],
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POSTFIELDS => json_encode($message)
             ]
         );
-        $result = curl_exec($push);
+        curl_exec($push);
         curl_close($push);
-        return $result;
     }
 }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Phormium\Model;
 
-Class Episode extends Model
+class Episode extends Model
 {
     protected static $_meta = array(
         'database' => 'sqlite',
@@ -19,5 +19,4 @@ Class Episode extends Model
     public $title;
     public $link;
     public $created_at;
-
 }

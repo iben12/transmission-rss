@@ -4,11 +4,12 @@ namespace App\Services;
 
 use Guzzle\Http\Exception\BadResponseException;
 
-Class Transmission {
+class Transmission
+{
 
     protected $transmission;
 
-    function __construct($config)
+    public function __construct($config)
     {
         $this->config = $config;
         $this->transmission = new \Vohof\Transmission($config);
@@ -17,14 +18,14 @@ Class Transmission {
     public function add($url, $title)
     {
         $dir = $this->config['shows_dir'] . $title . "/";
-        return $this->transmission->add($url, false,["download_dir" => $dir]);
+        return $this->transmission->add($url, false, ["download_dir" => $dir]);
     }
 
     public function cleanup()
     {
         $finished = $this->getFinished();
 
-        foreach($finished as $torrent) {
+        foreach ($finished as $torrent) {
             $this->transmission->remove([$torrent['id']]);
         }
 
@@ -33,10 +34,10 @@ Class Transmission {
 
     private function getFinished()
     {
-        $all = $this->transmission->get('all',['id','name','isFinished'])['torrents'];
+        $all = $this->transmission->get('all', ['id','name','isFinished'])['torrents'];
 
-        return array_filter($all, function($torrent) {
-           return  $torrent['isFinished'];
+        return array_filter($all, function ($torrent) {
+            return $torrent['isFinished'];
         });
     }
 }

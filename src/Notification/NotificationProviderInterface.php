@@ -2,7 +2,7 @@
 
 namespace App\Notification;
 
-interface NotificationServiceInterface
+interface NotificationProviderInterface
 {
     public function push($title, $body);
 }

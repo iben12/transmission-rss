@@ -1,25 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Notification;
 
-use \App\Notification\NotificationServiceInterface;
-
-class Boxcar implements NotificationServiceInterface
+class Boxcar implements NotificationProviderInterface
 {
-
-    private $token;
-
-    public function __construct()
-    {
-        $this->getConfig();
-    }
-
-    private function getConfig()
-    {
-        $config = require(__DIR__.'/../config.php');
-        $this->token = $config["boxcar"]["token"];
-    }
-
     public function push($title, $body)
     {
         curl_setopt_array(
@@ -28,7 +12,7 @@ class Boxcar implements NotificationServiceInterface
                 CURLOPT_URL => "https://new.boxcar.io/api/notifications",
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POSTFIELDS => [
-                    "user_credentials" => $this->token,
+                    "user_credentials" => config("boxcar.token"),
                     "notification[title]" => $title,
                     "notification[long_message]" => $body,
                     "notification[sound]" => "beep-soft",

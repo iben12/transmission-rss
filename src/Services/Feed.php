@@ -16,11 +16,11 @@ class Feed
      */
     protected $feedParser;
 
-    public function __construct($parsers, $data)
+    public function __construct($data)
     {
         $this->url = $data["url"];
         $this->type = $data["type"];
-        $this->feedParser = $this->getParser($parsers);
+        $this->feedParser = $this->getParser(config('parsers'));
     }
 
     /**

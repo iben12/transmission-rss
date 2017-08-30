@@ -9,13 +9,13 @@ Transmission-RSS is a tool to fetch and parse RSS feeds, extract episode data an
 ## What it has?
 * Web interface to display downloaded episodes and trigger actions (download, cleanup)
 * Currently includes a [ShowRSS](https://show-rss.info) parser, but parsers can be added by implementing `FeedParserInterface`.
-* [Boxcar](https://boxcar.io/) push notification integration
+* [Boxcar](https://boxcar.io/) and [Pushbullet](https://pushbullet.com/) push notification integration. Other push service providers can be added by implementing `NotificationProviderInterface`.
 * Commands for download and cleanup to be run by `cron`
 * SQLite DB to store downloaded episodes
 
 ## Usage
 1. Download or clone the repo.
-2. Open `src/config.php`
+2. Copy `config.php.example` to `config.example`
 3. Set up your feed at [ShowRSS](https://show-rss.info) and get feed URL.
 4. Enter your feed in `config.php`
 5. If you want to use trss from a server subdirectory and it to the `baseURI` ex.
@@ -43,19 +43,27 @@ Transmission-RSS is a tool to fetch and parse RSS feeds, extract episode data an
        ],
      ]
     ```
-7. If you want to use [Boxcar](https://boxcar.io/), set up your account, get a token and save it in `config.php`
+7. If you want to use [Boxcar](https://boxcar.io/) or [Pushbullet](https://pushbullet.com/), set up your account, get a token and save it in `config.php`
     ```php
     <?php
  
     return [
-       // ...
+        // ...
+        "notification" => [
+            "active" => true,
+            "service" => "pushbullet"
+        ],
        "boxcar" => [
-           "active" => true,
-           "token" => "your-token"
+        "provider" => \App\Notification\Boxcar::class,
+        "token" => "your-boxcar-token"
+        ],
+        "pushbullet" => [
+            "provider" => \App\Notification\Pushbullet::class,
+            "token" => "your-pushbullet-token"
         ]
      ]
     ```
-8. Copy the `src/trrss_db.sqlite.empty` file to `src/trrss_db.sqlite`
+8. Copy the `trrss_db.sqlite.empty` file to `trrss_db.sqlite`
 8. Basically you are ready to go.
 
 ## About

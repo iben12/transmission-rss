@@ -6,24 +6,21 @@ use App\Models\Episode;
 use App\Services\Feed;
 use App\Services\Message;
 use App\Services\Transmission;
+use App\Notification\NotificationProviderFactory;
 use Guzzle\Http\Exception\BadResponseException;
-use Phormium\Orm;
+use Phormium\DB;
 
 class Api
 {
-
-    protected $config;
-
     public function __construct()
     {
-        $this->config = require('config.php');
-        Orm::configure($this->config["orm"]);
+        DB::configure(config("orm"));
     }
 
     public function index(Request $request)
     {
         $methodCall = $request->uriSegments[2];
-        if ( method_exists($this, $methodCall) ) {
+        if (method_exists($this, $methodCall)) {
             return $this->$methodCall();
         } else {
             header("HTTP/1.0 404 Not Found");
@@ -44,7 +41,7 @@ class Api
      */
     public function feeds()
     {
-        return $this->config["feeds"];
+        return config("feeds");
     }
 
     public function fetch()
@@ -55,12 +52,12 @@ class Api
 
         foreach ($feeds as $feedData) {
             try {
-                $feed = new Feed($this->config["parsers"], $feedData);
+                $feed = new Feed($feedData);
             } catch (\Exception $e) {
                 continue;
             }
 
-            $newEpisodes = array_merge($newEpisodes,$feed->newEpisodes());
+            $newEpisodes = array_merge($newEpisodes, $feed->newEpisodes());
         }
 
         return $newEpisodes;
@@ -77,12 +74,12 @@ class Api
             return [];
         }
 
-        $transmission = new Transmission($this->config["transmission"]);
+        $transmission = new Transmission(config("transmission"));
 
         $downloading = [];
 
         foreach ($new as $episode) {
-            if ($this->config["transmission"]["active"]) {
+            if (config("transmission.active")) {
                 try {
                     $transmission->add($episode->link, $episode->show_title);
                 } catch (\Exception $e) {
@@ -96,8 +93,9 @@ class Api
             $episode->save();
         }
 
-        if ($this->config["notification"]["active"]) {
-            $msg = new Message($this->config["notification"]["service"]);
+        if (config("notification.active")) {
+            $activeService = config("notification.service");
+            $msg = new DownloadMessage(NotificationProviderFactory::getProvider($activeService));
             $msg->send($downloading);
         }
 
@@ -106,11 +104,10 @@ class Api
 
     public function cleanup()
     {
-        $transmission = new Transmission($this->config["transmission"]);
+        $transmission = new Transmission(config("transmission"));
 
         $removed = $transmission->cleanup();
 
         return $removed;
     }
-
 }

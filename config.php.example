@@ -31,13 +31,15 @@ return [
         ]
     ],
     "notification" => [
-        "active" => true,
+        "active" => false,
         "service" => "pushbullet"
     ],
     "boxcar" => [
+        "provider" => \App\Notification\Boxcar::class,
         "token" => "your-boxcar-token"
     ],
     "pushbullet" => [
+        "provider" => \App\Notification\Pushbullet::class,
         "token" => "your-pushbullet-token"
     ]
 ];

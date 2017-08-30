@@ -1,6 +1,8 @@
 vendor
 composer.lock
 node_modules
+config.php
+trss_db.sqlite
 .vscode/
 .idea/
 *.sqlite

@@ -11,7 +11,8 @@ class Router
         $this->request = new Request();
     }
 
-    public function get($uriPattern, $closure) {
+    public function get($uriPattern, $closure)
+    {
         if ($this->request->method == "GET" && $this->matchPattern($uriPattern)) {
             $this->response($closure);
         }
@@ -20,11 +21,13 @@ class Router
 
     private function matchPattern($uriPattern)
     {
-        if ($uriPattern == $this->request->uri) return true;
+        if ($uriPattern == $this->request->uri) {
+            return true;
+        }
 
-        if ( preg_match("/\/\*$/",$uriPattern) ) { // uri ends with "/*"
-            $uriPattern = str_replace('/*','',$uriPattern);
-            return strpos($this->request->uri,$uriPattern) > -1;
+        if (preg_match("/\/\*$/", $uriPattern)) { // uri ends with "/*"
+            $uriPattern = str_replace('/*', '', $uriPattern);
+            return strpos($this->request->uri, $uriPattern) > -1;
         }
         return false;
     }
@@ -33,7 +36,7 @@ class Router
     {
         $callable = $this->getCallable($closure);
 
-        $responseBody = call_user_func($callable,$this->request);
+        $responseBody = call_user_func($callable, $this->request);
 
         if ($this->request->uriSegments[1] == 'api') {
             $responseBody = json_encode($responseBody);
@@ -45,13 +48,12 @@ class Router
     private function getCallable($closure)
     {
         if (!is_callable($closure)) {
-            $closure = explode('@',$closure);
+            $closure = explode('@', $closure);
             $className = 'App\\'.$closure[0];
             $method = $closure[1];
             $class = new $className;
             return [$class,$method];
-        }
-        else {
+        } else {
             return $closure;
         }
     }
