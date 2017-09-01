@@ -18,9 +18,9 @@ class DownloadMessage extends Message
 
     private function renderBody($episodes)
     {
-        $body = "Added episodes:<br>";
+        $body = "Added episodes:\n";
         foreach ($episodes as $episode) {
-            $body .= $episode->show_title . ": " . $episode->title . '<br>';
+            $body .= $episode->show_title . ": " . $episode->title . "\n";
         }
 
         return $body;
