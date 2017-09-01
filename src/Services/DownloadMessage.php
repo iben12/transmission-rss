@@ -11,9 +11,9 @@ class DownloadMessage extends Message
         parent::__construct($service);
     }
 
-    public function send($episodes)
+    public function sendDownloads($episodes)
     {
-        parent::send('TransmissionRSS: New episode(s)', $this->renderBody($episodes));
+        $this->send('TransmissionRSS: New episode(s)', $this->renderBody($episodes));
     }
 
     private function renderBody($episodes)

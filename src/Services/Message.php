@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Notification\NotificationProviderInterface;
 use App\Notification\NotificationServiceFactory;
 
 class Message
 {
+    /** @var  NotificationProviderInterface $service */
     protected $service;
 
     public function __construct($service)

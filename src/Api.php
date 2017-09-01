@@ -4,7 +4,7 @@ namespace App;
 
 use App\Models\Episode;
 use App\Services\Feed;
-use App\Services\Message;
+use App\Services\DownloadMessage;
 use App\Services\Transmission;
 use App\Notification\NotificationProviderFactory;
 use Guzzle\Http\Exception\BadResponseException;
@@ -96,7 +96,7 @@ class Api
         if (config("notification.active")) {
             $activeService = config("notification.service");
             $msg = new DownloadMessage(NotificationProviderFactory::getProvider($activeService));
-            $msg->send($downloading);
+            $msg->sendDownloads($downloading);
         }
 
         return $downloading;
