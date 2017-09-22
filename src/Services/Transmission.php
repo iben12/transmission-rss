@@ -18,7 +18,7 @@ class Transmission
     public function add($url, $title)
     {
         $dir = $this->config['shows_dir'] . $title . "/";
-        return $this->transmission->add($url, false, ["download_dir" => $dir]);
+        return $this->transmission->add($url, false, ["download-dir" => $dir]);
     }
 
     public function cleanup()
