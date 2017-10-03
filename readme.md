@@ -3,6 +3,8 @@
 
 ![screenshot](http://i.imgur.com/Dn13ZlV.png)
 
+## Hello from android!
+
 ## What is this?
 Transmission-RSS is a tool to fetch and parse RSS feeds, extract episode data and add them to transmission client through it's RPC interface.
 
