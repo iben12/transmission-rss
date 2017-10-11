@@ -21,7 +21,7 @@ return [
         "endpoint" => "/transmission/rpc",
         "username" =>"username",
         "password" =>"password",
-        "shows_dir" => "/path/to/tv-shows/folder"
+        "shows_dir" => "/path/to/tv-shows/folder/" // trailing slash is important!
     ],
     "orm" => [
         "databases" => [
