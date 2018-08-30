@@ -1,5 +1,6 @@
 {
     "name": "iben/transmission-rss",
+    "version": "v0.1.1b",
     "require": {
         "vohof/transmission": "^1.0",
         "lightools/xml": "^1.0",
