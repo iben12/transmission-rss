@@ -6,7 +6,7 @@ COPY package.json yarn.lock ./
 COPY resources ./resources
 COPY webpack.config.js .
 
-RUN yarn install && npm run build
+RUN yarn install --production && npm run build
 
 
 FROM composer AS php-build
@@ -15,7 +15,7 @@ WORKDIR /app
 
 COPY ./composer.json ./composer.lock ./
 
-RUN composer install
+RUN composer install --no-dev
 
 
 FROM webdevops/php-nginx:alpine AS final
