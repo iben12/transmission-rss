@@ -17,9 +17,8 @@ jobs:
     - name: Login
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_NAMESPACE: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         REGISTRY_URL: "docker.io"
-      run: docker login -u DOCKER_USERNAME -p DOCKER_PASSWORD
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - name: Push
       run: docker push iben12/trss:latest
