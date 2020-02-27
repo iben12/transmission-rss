@@ -13,7 +13,7 @@ jobs:
     - name: Build
       env:
         DOCKER_BUILDKIT: 1
-      run: docker buid -t iben12/trss --target final .
+      run: docker build -t iben12/trss --target final .
     - name: Login
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
