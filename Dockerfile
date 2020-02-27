@@ -6,7 +6,7 @@ COPY package.json yarn.lock ./
 COPY resources ./resources
 COPY webpack.config.js .
 
-RUN yarn install --production && npm run build
+RUN yarn install && npm run build
 
 
 FROM composer AS php-build
