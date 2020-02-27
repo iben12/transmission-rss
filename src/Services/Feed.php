@@ -68,10 +68,6 @@ class Feed
             ->filter('show_id', '=', $episode->show_id)
             ->fetch();
 
-        if (!$existing) {
-            return true;
-        } else {
-            return false;
-        }
+        return !$existing;
     }
 }

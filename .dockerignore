@@ -1,10 +1,8 @@
 vendor
 node_modules
 config.php
-trss_db.sqlite
 downloaded.sql
 db/
 .env
 .vscode/
 .idea/
-*.sqlite

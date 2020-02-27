@@ -7,7 +7,7 @@ use Phormium\Model;
 class Episode extends Model
 {
     protected static $_meta = array(
-        'database' => 'sqlite',
+        'database' => 'mysql',
         'table' => 'downloaded',
         'pk' => 'id'
     );

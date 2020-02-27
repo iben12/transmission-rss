@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  app:
+    # image: webdevops/php-nginx-dev:alpine
+    build:
+      context: .
+      target: final
+    ports:
+      - "9012:80"
+    volumes:
+      - ./config.php:/app/config.php
+  mysql:
+    image: mariadb
+    ports:
+      - 14306:3306
+    env_file:
+      - .env
