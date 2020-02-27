@@ -25,7 +25,6 @@ ENV WEB_DOCUMENT_ROOT=/app/public
 COPY --chown=application:application --from=php-build /app/vendor /app/vendor
 COPY --chown=application:application ./src /app/src
 COPY --chown=application:application ./public /app/public
-COPY --chown=application:application ./trrss_db.sqlite /app/trrss_db.sqlite
 COPY --chown=application:application --from=js-build /app/public/assets /app/public/assets
 COPY ./config.php.example /app/config.php
 

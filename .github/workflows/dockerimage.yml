@@ -10,13 +10,16 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Build and Push
-      uses: zemuldo/docker-build-push@master
+    - name: Build
+      env:
+        DOCKER_BUILDKIT: 1
+      run: docker buid -t iben12/trss --target final .
+    - name: Login
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_NAMESPACE: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         REGISTRY_URL: "docker.io"
-      with:
-       image_name: "trss"
-       image_tag: "github"
+      run: docker login -u DOCKER_USERNAME -p DOCKER_PASSWORD
+    - name: Push
+      run: docker push iben12/trss:latest
