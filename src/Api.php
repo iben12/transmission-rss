@@ -84,7 +84,7 @@ class Api
                     $transmission->add($episode->link, $episode->show_title);
                 } catch (\Exception $e) {
                     continue;
-                    // TODO: notify user
+                    error_log("Failed to add episode to Transmission: " . $episode->show_title);
                 }
             }
 
@@ -99,6 +99,8 @@ class Api
             $msg->sendDownloads($downloading);
         }
 
+        error_log("Enqueued " . count($downloading) . " episodes to Transmission.");
+
         return $downloading;
     }
 
@@ -107,6 +109,8 @@ class Api
         $transmission = new Transmission(config("transmission"));
 
         $removed = $transmission->cleanup();
+
+        error_log("Removed " . count($removed) . " episodes from Transmission.");
 
         return $removed;
     }
