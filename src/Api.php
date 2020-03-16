@@ -5,6 +5,7 @@ namespace App;
 use App\Models\Episode;
 use App\Services\Feed;
 use App\Services\DownloadMessage;
+use App\Services\RemoveMessage;
 use App\Services\Transmission;
 use App\Notification\NotificationProviderFactory;
 use Guzzle\Http\Exception\BadResponseException;
@@ -109,6 +110,12 @@ class Api
         $transmission = new Transmission(config("transmission"));
 
         $removed = $transmission->cleanup();
+
+        if (config("notification.active")) {
+            $activeService = config("notification.service");
+            $msg = new RemoveMessage(NotificationProviderFactory::getProvider($activeService));
+            $msg->sendRemoved($removed);
+        }
 
         error_log("Removed " . count($removed) . " episodes from Transmission.");
 
