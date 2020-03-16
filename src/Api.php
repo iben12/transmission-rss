@@ -111,7 +111,7 @@ class Api
 
         $removed = $transmission->cleanup();
 
-        if (count($removed) < 1 ) {
+        if (count($removed) < 1) {
             return [];
         }
 
