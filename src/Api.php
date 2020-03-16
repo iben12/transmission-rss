@@ -111,6 +111,10 @@ class Api
 
         $removed = $transmission->cleanup();
 
+        if (count($removed) < 1 ) {
+            return [];
+        }
+
         if (config("notification.active")) {
             $activeService = config("notification.service");
             $msg = new RemoveMessage(NotificationProviderFactory::getProvider($activeService));
