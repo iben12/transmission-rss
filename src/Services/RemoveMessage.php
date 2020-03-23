@@ -16,11 +16,11 @@ class RemoveMessage extends Message
         $this->send('TransmissionRSS: Removed episode(s)', $this->renderBody($episodes));
     }
 
-    private function renderBody($episodes)
+    private function renderBody($removed)
     {
         $body = "Removed episodes:\n";
-        foreach ($episodes as $episode) {
-            $body .= $episode->show_title . ": " . $episode->title . "\n";
+        foreach ($removed as $torrent) {
+            $body .= $torrent['name'] . "\n";
         }
 
         return $body;
