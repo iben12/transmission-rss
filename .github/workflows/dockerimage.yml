@@ -16,15 +16,12 @@ jobs:
       env:
         DOCKER_BUILDKIT: 1
       with:
-        username: nologin
+        username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: trss
         registry: docker.io/iben12
         tags: latest, ${{ env.GITHUB_SHA_SHORT }}
 
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
     - name: Setup Kustomize
       uses: imranismail/setup-kustomize@v1
       with:
