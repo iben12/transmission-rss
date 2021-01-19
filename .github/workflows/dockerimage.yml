@@ -42,7 +42,7 @@ jobs:
       run: git add .
     - name: Commit changes
       working-directory: ./gitops
-      run: git commit -m "Release anez-${{ env.GITHUB_SHA_SHORT }}"
+      run: git commit -m "Release trss-${{ env.GITHUB_SHA_SHORT }}"
     - name: Push
       working-directory: ./gitops
       run: git push origin master
