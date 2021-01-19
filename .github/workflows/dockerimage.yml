@@ -9,16 +9,44 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-
-    - name: Build
+    - name: Inject slug/short variables
+      uses: rlespinasse/github-slug-action@v2.x
+    - name: Build and push
+      uses: docker/build-push-action@v1
       env:
         DOCKER_BUILDKIT: 1
-      run: docker build -t iben12/trss --target final .
-    - name: Login
+      with:
+        username: nologin
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: trss
+        registry: docker.io/iben12
+        tags: latest, ${{ env.GITHUB_SHA_SHORT }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Kustomize
+      uses: imranismail/setup-kustomize@v1
+      with:
+        kustomize-version: "3.9.2"
+    - name: Checkout GitOps repo
+      run: git clone https://${GITOPS_TOKEN}@github.com/iben12/k8city-apps.git gitops
       env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        REGISTRY_URL: "docker.io"
-      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        GITOPS_TOKEN: ${{secrets.GITOPS_TOKEN}}
+    - name: Run Kustomize
+      working-directory: ./gitops/own-projects/trss
+      run: kustomize edit set image iben12/trss:${{ env.GITHUB_SHA_SHORT }}
+    - name: Configure Git
+      working-directory: ./gitops
+      run: |
+        git config --global user.email "deployer@skizoidglam.net"
+        git config --global user.name "GitOps deployer"
+    - name: Stage changes
+      working-directory: ./gitops
+      run: git add .
+    - name: Commit changes
+      working-directory: ./gitops
+      run: git commit -m "Release anez-${{ env.GITHUB_SHA_SHORT }}"
     - name: Push
-      run: docker push iben12/trss:latest
+      working-directory: ./gitops
+      run: git push origin master
