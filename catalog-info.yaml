@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: transmission-rss
+  annotations:
+    github.com/project-slug: iben12/transmission-rss
+  namespace: default
+spec:
+  type: other
+  lifecycle: unknown
+  owner: Group:default/team-a
