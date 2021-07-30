@@ -5,6 +5,7 @@ namespace App;
 use App\Models\Episode;
 use App\Services\Feed;
 use App\Services\DownloadMessage;
+use App\Services\RemoveMessage;
 use App\Services\Transmission;
 use App\Notification\NotificationProviderFactory;
 use Guzzle\Http\Exception\BadResponseException;
@@ -84,7 +85,7 @@ class Api
                     $transmission->add($episode->link, $episode->show_title);
                 } catch (\Exception $e) {
                     continue;
-                    // TODO: notify user
+                    error_log("Failed to add episode to Transmission: " . $episode->show_title);
                 }
             }
 
@@ -99,6 +100,8 @@ class Api
             $msg->sendDownloads($downloading);
         }
 
+        error_log("Enqueued " . count($downloading) . " episodes to Transmission.");
+
         return $downloading;
     }
 
@@ -107,6 +110,18 @@ class Api
         $transmission = new Transmission(config("transmission"));
 
         $removed = $transmission->cleanup();
+
+        if (count($removed) < 1) {
+            return [];
+        }
+
+        if (config("notification.active")) {
+            $activeService = config("notification.service");
+            $msg = new RemoveMessage(NotificationProviderFactory::getProvider($activeService));
+            $msg->sendRemoved($removed);
+        }
+
+        error_log("Removed " . count($removed) . " episodes from Transmission.");
 
         return $removed;
     }

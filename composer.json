@@ -3,6 +3,7 @@
     "version": "v0.1.1b",
     "require": {
         "vohof/transmission": "^1.0",
+        "symfony/event-dispatcher": "v3.3.9",
         "lightools/xml": "^1.0",
         "phormium/phormium": "0.*"
     },
