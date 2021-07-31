@@ -9,10 +9,10 @@ class Transmission
 
     protected $transmission;
 
-    public function __construct($config)
+    public function __construct($config, $client = null)
     {
         $this->config = $config;
-        $this->transmission = new \Vohof\Transmission($config);
+        $this->transmission = new \Vohof\Transmission($config, $client);
     }
 
     public function add($url, $title)
