@@ -2,17 +2,18 @@ version: "3.7"
 
 services:
   app:
-    # image: webdevops/php-nginx-dev:alpine
     build:
       context: .
-      target: final
+      target: prod
     ports:
-      - "9012:80"
+      - "8080:8080"
     volumes:
-      - ./config.php:/app/config.php
-  mysql:
-    image: mariadb
-    ports:
-      - 14306:3306
-    env_file:
-      - .env
+      - ./config.php:/var/www/html/config.php
+
+  # mysql:
+  #   image: mariadb
+  #   ports:
+  #     - 14306:3306
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=secret
+  #     - MYSQL_DATABASE=trss

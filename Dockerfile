@@ -18,13 +18,23 @@ COPY ./composer.json ./composer.lock ./
 RUN composer install --no-dev
 
 
-FROM webdevops/php-nginx:alpine AS final
+FROM php:7.4-apache as php
 
-ENV WEB_DOCUMENT_ROOT=/app/public
+RUN a2enmod rewrite headers
 
-COPY --chown=application:application --from=php-build /app/vendor /app/vendor
-COPY --chown=application:application ./src /app/src
-COPY --chown=application:application ./public /app/public
-COPY --chown=application:application --from=js-build /app/public/assets /app/public/assets
-COPY ./config.php.example /app/config.php
+RUN docker-php-ext-install pdo_mysql
+
+USER 1000
+
+COPY php.ini /usr/local/etc/php/php.ini
+COPY apache-ports.conf /etc/apache2/ports.conf
+COPY apache-site-default.conf /etc/apache2/sites-available/000-default.conf
+
+FROM php as prod
+
+COPY --chown=1000:1000 --from=php-build /app/vendor /var/www/html/vendor
+COPY --chown=1000:1000 ./src /var/www/html/src
+COPY --chown=1000:1000 ./public /var/www/html/public
+COPY --chown=1000:1000 --from=js-build /app/public/assets /var/www/html/public/assets
+COPY ./config.php.example /var/www/html/config.php
 

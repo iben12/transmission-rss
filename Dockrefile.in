@@ -1,0 +1,48 @@
+FROM composer:1.10.19 as php-builder
+WORKDIR /app
+COPY database /app/database
+COPY composer.json composer.json
+COPY composer.lock composer.lock
+
+RUN composer install \
+  --ignore-platform-reqs \
+  --no-interaction \
+  --no-plugins \
+  --no-scripts \
+  --prefer-dist
+
+FROM node:10 as js-builder
+RUN mkdir -p public
+COPY package.json webpack.mix.js yarn.lock ./
+COPY resources/assets/ ./resources/assets
+RUN --mount=type=cache,target=/root/.npm \
+  yarn install && yarn production
+
+
+FROM php:7.4-apache as php
+
+RUN a2enmod rewrite headers
+
+RUN apt-get update -y \
+    && apt-get install -y \
+    zlib1g-dev \
+    libpng-dev \
+    libjpeg62-turbo-dev
+
+RUN docker-php-ext-configure gd --with-jpeg \
+    && docker-php-ext-install pdo_mysql gd
+
+USER 1000
+
+COPY php.ini /usr/local/etc/php/php.ini
+COPY apache-ports.conf /etc/apache2/ports.conf
+COPY apache-site-default.conf /etc/apache2/sites-available/000-default.conf
+
+
+FROM php as prod
+
+COPY --chown=1000:1000 . /var/www/html
+COPY --chown=1000:1000 --from=php-builder /app/vendor /var/www/html/vendor
+COPY --chown=1000:1000 --from=js-builder /public/js/ /var/www/html/public/js/
+COPY --chown=1000:1000 --from=js-builder /public/css/ /var/www/html/public/css/
+COPY --chown=1000:1000 --from=js-builder /mix-manifest.json /var/www/html/mix-manifest.json
